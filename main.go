@@ -62,9 +62,11 @@ func runGradleTask(gradleTool, buildFile, tasks, options string, destDir string)
 	}
 
 	cmdSlice := []string{gradleTool}
-	if buildFile != "" {
-		cmdSlice = append(cmdSlice, "--build-file", buildFile)
-	}
+	// There is no use case for using separate build.gradle
+	// After Gradle 8, this is generating build error
+	// if buildFile != "" {
+	//	cmdSlice = append(cmdSlice, "--build-file", buildFile)
+	//}
 	cmdSlice = append(cmdSlice, taskSlice...)
 	cmdSlice = append(cmdSlice, optionSlice...)
 
